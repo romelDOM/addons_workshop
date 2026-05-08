@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_workshop_workshop,workshop.workshop,model_workshop_workshop,,1,1,1,1
+access_workshop_parts,workshop_parts,model_workshop_parts,,1,1,1,1
+access_workshop_date_report_wizard,workshop_date_report_wizard,model_workshop_date_report_wizard,,1,1,1,1

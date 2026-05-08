@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record id="view_date_report_wizard" model="ir.ui.view">
+            <field name="name">Date Report</field>
+            <field name="model">workshop.date.report.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Orders Reports">
+                    <p class="oe_gray">
+                        Generate PDF format report between a date.
+                    </p>
+                    <group>
+                        <field name="start_date"/>
+                        <field name="end_date"/>
+                    </group>
+                    <footer>
+                        <button 
+                            name="print_report"
+                            string="Print report"
+                            type="object" class="btn_primary"
+                        />
+                        <button 
+                            string="Cancel"
+                            class="btn_secondary"
+                            special="cancel"
+                        />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_view_date_report_wizard" model="ir.actions.act_window">
+            <field name="name">Date Report</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">workshop.date.report.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem
+            id="date_report_wizard_menu"
+            name="Date Report"
+            parent="workshop.menu_root"
+            action="action_view_date_report_wizard"
+        />
+</odoo>

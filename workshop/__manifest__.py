@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "taller",
+    'name': "workshop",
 
     'summary': "Short (1 phrase/line) summary of the module's purpose",
 
@@ -21,10 +21,13 @@ Long description of module's purpose
     'depends': ['base'],
 
     # always loaded
-    'data': [
-        # 'security/ir.model.access.csv',
-        'views/views.xml',
-        'views/templates.xml',
+    "data": [
+        "security/ir.model.access.csv",
+        "views/workshop.xml",
+        "views/parts.xml",
+        "report/dates_external_layout.xml",
+        "wizard/date_report.xml",
+        "views/templates.xml"
     ],
     # only loaded in demonstration mode
     'demo': [

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="report_DateReportExternalLayout" model="ir.actions.report">
+        <field name="name">Date Report</field>
+        <field name="model">workshop.date.report.wizard</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">workshop.datesReportExternalLayout</field>
+        <field name="report_file">workshop.datesReportExternalLayout</field>
+    </record>
+
+    <template id="workshop.datesReportExternalLayout">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <div class="page" style="font-size=18px">
+                    <div class="row">
+                        <div class="col-md-12" align="center">
+                            <h2>Workshop Report</h2>
+                            <h4>From: <t t-esc="start_date"></t> To: <t t-esc="end_date"></t></h4>
+                            <table class="table mt16">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Description</th>
+                                        <th scope="col">Warranty</th>
+                                        <th scope="col">Reception Date</th>
+                                        <th scope="col">Labor Cost</th>
+                                        <th scope="col">Repair Parts Cost</th>
+                                        <th scope="col">Repair Total Cost</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="WorkshopRecords" t-as="record">
+                                        <tr>
+                                            <td>
+                                                <t t-esc="record['name']"></t>
+                                            </td>
+                                            <td>
+                                                <t t-esc="record['description']"></t>
+                                            </td>
+                                            <td>
+                                                <t t-esc="record['warranty']"></t>
+                                            </td>
+                                            <td>
+                                                <t t-esc="record['reception_date']"></t>
+                                            </td>
+                                            <td>
+                                                <t t-esc="record['labor_cost']"></t>
+                                            </td>
+                                            <td>
+                                                <t t-esc="record['repair_parts_cost']"></t>
+                                            </td>
+                                            <td>
+                                                <t t-esc="record['repair_total_cost']"></t>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

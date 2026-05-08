@@ -1,0 +1,70 @@
+<odoo>
+  <data>
+    <!-- WORKSHOP PARTS VIEW -->
+
+    <!-- explicit list view definition -->
+    <record model="ir.ui.view" id="parts_list">
+      <field name="name">Parts List</field>
+      <field name="model">workshop.parts</field>
+      <field name="arch" type="xml">
+        <list>
+          <field name="id" string="ID"/>
+          <field name="name"/>
+          <field name="stock"/>
+          <field name="price"/>
+        </list>
+      </field>
+    </record>
+
+    <!-- explicit form view definition -->
+    <record model="ir.ui.view" id="parts_form">
+      <field name="name">Parts Form</field>
+      <field name="model">workshop.parts</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group string="General Information">
+              <field name="name" placeholder="Part Name"/>
+            </group>
+
+            <group string="Stock">
+              <field name="stock" placeholder="Part Stock"/>
+            </group>
+
+            <group string="Price">
+              <field name="price" placeholder="Part Price"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="parts_action_window">
+      <field name="name">Parts Manager</field>
+      <field name="res_model">workshop.parts</field>
+      <field name="view_mode">list,form</field>
+    </record>
+
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="workshop.action_server">
+      <field name="name">workshop server</field>
+      <field name="model_id" ref="model_workshop_workshop"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "list,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+      <menuitem name="Stock" id="menu_parts" parent="menu_root" action="parts_action_window"/>
+
+  </data>
+</odoo>
