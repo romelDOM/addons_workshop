@@ -16,11 +16,12 @@
                         <button 
                             name="print_report"
                             string="Print report"
-                            type="object" class="btn_primary"
+                            type="object" 
+                            class="btn-primary"
                         />
                         <button 
                             string="Cancel"
-                            class="btn_secondary"
+                            class="btn-secondary"
                             special="cancel"
                         />
                     </footer>

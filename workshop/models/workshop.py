@@ -1,17 +1,17 @@
 # -*- coding: utf-8 -*-
 
 from odoo import models, fields, api
-from odoo.exceptions import ValidationError
+from odoo.exceptions import ValidationError, UserError
 
 
-class workshop(models.Model):
+class Workshop(models.Model):
     _name = 'workshop.workshop'
     _description = 'Workshop'
 
     name = fields.Char(string='Name', required=True)
     description = fields.Text(string='Description', required=True)
     warranty = fields.Boolean(string='Warranty', required=True, default=False)
-    reception_date = fields.Date(string='Reception Date', required=True, default=fields.Date.today())
+    reception_date = fields.Date(string='Reception Date', required=True, default=fields.Date.context_today)
     completion_date = fields.Date(string='Completion Date')
     labor_cost = fields.Float(string='Labor Cost', required=True)
     repair_parts_cost = fields.Float(string='Parts Cost', required=True, compute='_depends_set_repair_parts_cost')
@@ -57,3 +57,9 @@ class workshop(models.Model):
                 raise ValidationError('Labor cost cannot be negative')
             if record.repair_parts_cost < 0:
                 raise ValidationError('Parts cost cannot be negative')
+
+    def unlink(self):
+        for record in self:
+            if record.status == 'completed':
+                raise UserError('You cannot delete a completed workshop.')
+        return super(Workshop, self).unlink()
